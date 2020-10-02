@@ -37,7 +37,7 @@
             ).map(item => ({
                 name:           item.name,
                 title:          item.name.trim().toLowerCase().replace('lesson', 'Lesson #'),
-                description:    item.description,
+                description:    item.description.replace('&amp;', '&'),
                 lessonNumber:   +item.name.trim().toLowerCase().replace('lesson', ''),
                 url:            item.clone_url,
                 pdfLink:        `${item.html_url}/raw/${item.default_branch}/${item.name}.pdf`,
