@@ -40,7 +40,8 @@
                 description:    item.description,
                 lessonNumber:   +item.name.trim().toLowerCase().replace('lesson', ''),
                 url:            item.clone_url,
-                pdfLink:        `${item.html_url}/raw/${item.default_branch}/${item.name}.pdf`
+                pdfLink:        `${item.html_url}/raw/${item.default_branch}/${item.name}.pdf`,
+                pptxLink:       `${item.html_url}/raw/${item.default_branch}/${item.name}.pptx`
             })).sort( (a, b) => b.lessonNumber - a.lessonNumber );
             
         }
