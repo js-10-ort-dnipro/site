@@ -17,7 +17,8 @@
                 repositoriesList: [],
                 groupTitle: 'JS10',
                 groupFullTitle: 'JS10@ORTDNIPRO',
-                totalLessonQuantity: 12
+                totalLessonQuantity: 12,
+                showPPTX: false
             }
         },
 
@@ -29,8 +30,6 @@
             }); 
             
             answer = await answer.json();
-
-            console.log(answer);
 
             this.repositoriesList = answer.filter( 
                 item => item.name.trim().toLowerCase().startsWith('lesson')

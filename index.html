@@ -30,7 +30,7 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 
 </head>
-<body>
+<body id='app-container'>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -91,7 +91,7 @@
 	<!-- Social links section end -->
 
 	<!-- Lessons section start -->
-	<section class="resume-section spad" id='app-container'>
+	<section class="resume-section spad" >
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xl-8 offset-xl-2">
@@ -118,7 +118,7 @@
 									<i title="Download PDF From GitHub" class="fa fa-file-pdf-o fa-3x"></i>
 								</a>
 
-								<a target='_blank' :href='item.pptxLink' style='color:black'>
+								<a target='_blank' v-if='showPPTX' :href='item.pptxLink' style='color:black'>
 									<i title="Download PPTX From GitHub" class="fa fa-file-powerpoint-o fa-3x"></i>
 								</a>
 							</div>
@@ -139,7 +139,7 @@
 				<a target="_blank" href='https://ort.dp.ua/js/'>
 					<u>ORT DNIPRO</u>
 				</a> 
-				&copy; 2013-<span id='current-year'></div>
+				<span @click='showPPTX = !showPPTX'> &copy; </span> 2013-<span id='current-year'></div>
 				
 				<script>
 
