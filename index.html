@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>JS10@ORTDNIPRO</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="JS10@ORTDNIPRO">
-	<meta name="keywords" content="Учебные материалы для группы JS10 образовательного центра ORT DNIPRO">
+	
+	<!-- Start Configuration Data -->
+
+	<title>JS10@ORTDNIPRO</title>
+
+	<meta 
+		data-total-lesson-quantity='12'
+		data-show-git-hub-link-after='1'
+		data-show-certificates-data-button='false'
+		data-certificates-data-link='#'
+		data-show-course-review-button='false'
+		data-show-course-review-after='2020-11-26T19:55:00Z'
+		data-course-review-link='https://forms.gle/odFjPyrU5gzQjDFu7'
+		data-git-hub-account='js10-ortdnipro'
+		data-git-hub-token='MjNhMGQwOTZmYjIzYzI2OTI1NzYxMDUwMGI5NTBmODI4ZWZiODRmZA=='
+		data-telegram-group-link='https://t.me/joinchat/GWql0leFfjRUX4w5YS8BNQ'
+		data-course-link-on-main-site='https://ortdnipro.org/js/'
+	>
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="description" content="Учебные материалы для группы JS10 образовательного центра ORT DNIPRO">
+
+	<meta property="og:description" content="Учебные материалы для группы JS10 образовательного центра ORT DNIPRO" />
+
+	<meta property="og:site_name" content="ORT DNIPRO | Международный образовательный центр"/>
+		
+	<meta property="og:url" content="https://js10.ortdnipro.org/" />
+	
+	<!-- End Configuration Data -->
+
+	<meta property="og:image" content="https://ortdnipro.org/media/js-preview-image.png" />
+
+	<meta name="twitter:card" content="summary_large_image"/>
+	
 	<!-- Favicon -->   
 	<link href="./assets/img/favicon.jpg" rel="shortcut icon"/>
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Roboto+Slab&display=swap" rel="stylesheet">
-
+	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./assets/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="./assets/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="./assets/css/fa5.css"/>
 	<link rel="stylesheet" href="./assets/css/flaticon.css"/>
 	<link rel="stylesheet" href="./assets/css/owl.carousel.css"/>
 	<link rel="stylesheet" href="./assets/css/magnific-popup.css"/>
 	<link rel="stylesheet" href="./assets/css/style.css"/>
-	<link rel="stylesheet" href="./assets/css/custom.css"/>
-
-
-	<meta property="og:site_name" content="ORT DNIPRO | Международный образовательный центр"/>
-	<meta property="og:title" content="JS10@ORTDNIPRO" />
-	<meta property="og:description" content="Учебные материалы для группы JS10 образовательного центра ORT DNIPRO" />
-	<meta property="og:url" content="https://js10.ortdnipro.org/" />
-	<meta property="og:image" content="https://js10.ortdnipro.org/assets/img/logo-glow.png" />
-	<meta name="twitter:card" content="summary_large_image"/>
+	<link rel="stylesheet" href="./assets/css/custom.css?version=3"/>
 
 </head>
 <body id='app-container'>
@@ -40,27 +60,25 @@
 	<header class="header-section">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-lg-4">
 					<div class="site-logo">
-						<h2>JS10@ORTDNIPRO</h2>
+						<h2>{{groupFullTitle}}</h2>
 						<p>Курс 
-							<a target='_blank' href='https://ort.dp.ua/js/'>
-							Front end разработка на JavaScript</a>
+							<a target='_blank' :href='courseLinkOnMainSite'>
+								Front end разработка на JavaScript
+							</a>
 						</p>
 					</div>
 				</div>
-				<div class="col-md-8 text-md-right header-buttons">
-					
-					<!--
-					<a href="#" class="site-btn d-inline-flex align-items-end p-3">
-						<i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
-						<span>&nbsp;&nbsp;Данные для сертификатов</span>
+				<div class="col-lg-8 text-lg-right header-buttons">
+					<a v-if='showCertificatesDataButton' :href="certificatesDataLink" class="site-btn d-inline-flex align-items-center">
+						<i class="fas fa-2x fa-graduation-cap"></i>
+						&nbsp;Анкета для Сертификатов
 					</a>
-					<a href="#" class="site-btn d-inline-flex align-items-end p-3"> 
-						<i class="fa fa-2x fa-commenting-o" aria-hidden="true"></i>
-						<span>&nbsp;&nbsp;Ваше мнение о курсе</span>
-					</a>-->
-
+					<a v-if='isShowCourseReviewButton' :href="courseReviewLink" class="site-btn bg-primary text-white d-inline-flex align-items-center">
+						<i class="fas fa-2x fa-balance-scale"></i>
+						&nbsp;Ваше мнение о курсе
+					</a>
 				</div>
 				
 			</div>
@@ -75,11 +93,11 @@
 				<div class="col-xl-10 offset-xl-1">
 					<div class="social-link-warp">
 						<div class="social-links">
-							<a target='_blank' class='mx-5' href="https://t.me/joinchat/GWql0leFfjRUX4w5YS8BNQ">
-								<i class="scale-icon fa fa-telegram"></i>
+							<a target='_blank' class='mx-5' :href="telegramGroupLink">
+								<i class="scale-icon fa-2x fab fa-telegram"></i>
 							</a>
-							<a target='_blank' class='mx-5' href="https://github.com/js10-ortdnipro">
-								<i class="scale-icon scale-icon-more fa fa-github"></i>
+							<a target='_blank' class='mx-5' :href="`https://github.com/${gitHubAccount}`">
+								<i class="scale-icon fa-2x fab fa-github"></i>
 							</a>
 						</div>
 						<h2 class="hidden-md hidden-sm">Telegram / GitHub</h2>
@@ -91,38 +109,51 @@
 	<!-- Social links section end -->
 
 	<!-- Lessons section start -->
-	<section class="resume-section spad" >
+	<section class="resume-section spad">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xl-8 offset-xl-2">
 					<div class="section-title">
-						<h2>JS10 Lessons List:</h2>
+						<h2 class='mb-5'>{{groupTitle}} Lessons List:</h2>
+						<div class='d-flex align-items-center search-block my-4'>
+							<i class="fas fa-search fa-2x text-muted"></i>
+							&nbsp;
+							<input placeholder="Search..." v-model='searchText' id='search-text'>
+							
+						</div>
+						<h3 class='founded-stat text-muted my-4'>&nbsp;
+							<span v-if='searchText.trim().length'>Найдено {{searchResult.length}} из {{repositoriesList.length}}</span>
+						</h3>
 					</div>
 					<ul class="resume-list">
-						<li v-for='item in repositoriesList'>
+						<li v-for='item in searchResult'>
 							<h2>
-								<a title="Open On GitHub" target='_blank' :href='item.url' style='color:black'>
-									{{item.title}}
-								</a> 
-								<span class='total-quantity-label'> / {{totalLessonQuantity}}</span></h2>
+								{{item.title}}
+								<span class='total-quantity-label'> / {{totalLessonQuantity}}</span>
+							</h2>
+							<p>{{item.description}}</p>
 							<div class='linkbox my-3'>
-								<input type='text' readonly :value='item.url'>
+								<input v-if='item.lessonNumber >= showGitHubLinkAfter' style='min-width: 250px;' class='ml-2' type='text' readonly :value='item.url'>
 								
-								<i title="Copy To Clipboard" @click='copyToClipboard' class="fa fa-clipboard fa-3x"></i>
+								<i v-if='item.lessonNumber >= showGitHubLinkAfter'  title="Copy To Clipboard" @click='copyToClipboard' class="fas fa-paste fa-3x"></i>
 
-								<a target='_blank' :href='item.url' style='color:black'>
-									<i title="Open On GitHub"  class="fa fa-3x fa-github-square" ></i>
+								<a v-if='item.lessonNumber >= showGitHubLinkAfter'  target='_blank' :href='item.url' style='color:black'>
+									<i title="Open On GitHub"  class="fa-3x fas fa-code-branch"></i>
 								</a>
 
 								<a target='_blank' :href='item.pdfLink' style='color:black'>
-									<i title="Download PDF From GitHub" class="fa fa-file-pdf-o fa-3x"></i>
+									<i title="Download PDF From GitHub" class="far fa-file-pdf fa-3x"></i>
 								</a>
-
+							
 								<a target='_blank' v-if='showPPTX' :href='item.pptxLink' style='color:black'>
-									<i title="Download PPTX From GitHub" class="fa fa-file-powerpoint-o fa-3x"></i>
+									<i title="Download PPTX From GitHub" class="far fa-file-powerpoint fa-3x"></i>
 								</a>
 							</div>
-							<p>{{item.description}}</p>
+								
+						</li>
+						<li v-if='isNothingFound' class='mb-5'>
+							<h3 class='mb-5 text-muted' class=''>Ничего не найдено...</h3>
+							<p>Попробуйте другой поисковый запрос...</p>
 						</li>
 						
 					</ul>
@@ -136,10 +167,13 @@
 	<footer class="footer-section">
 		<div class="container text-center">
 			<div class="copyright">
-				<a target="_blank" href='https://ort.dp.ua/js/'>
+				<a target="_blank" :href='courseLinkOnMainSite'>
 					<u>ORT DNIPRO</u>
 				</a> 
-				<span @click='showPPTX = !showPPTX'> &copy; </span> 2013-<span id='current-year'></div>
+				<span @click='showPPTX = !showPPTX'>
+					&copy;
+				</span> 
+				2013-<span id='current-year'></div>
 				
 				<script>
 
@@ -160,8 +194,7 @@
 	<script src="./assets/js/magnific-popup.min.js"></script>
 	<script src="./assets/js/circle-progress.min.js"></script>
 	<script src="./assets/js/main.js"></script>
-	<!--<script src="https://unpkg.com/vue@next"></script>-->
 	<script src="./assets/js/vue.global.prod.js"></script>
-	<script src="./assets/js/code.js"></script>
+	<script src="./assets/js/code.js?version=3"></script>
 </body>
 </html>
