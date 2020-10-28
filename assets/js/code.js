@@ -42,32 +42,30 @@
             let titleTag = document.querySelector('title');
             let appDataTag = document.querySelector('title + meta');
             
-            return {
+            console.dir( appDataTag.dataset);
+
+            let dataConfig = {
+
                 repositoriesList: [],
                 groupTitle: titleTag.innerHTML.split('@')[0],
                 groupFullTitle: titleTag.innerHTML,
-                totalLessonQuantity: appDataTag.dataset.totalLessonQuantity,
-                showGitHubLinkAfter: appDataTag.dataset.showGitHubLinkAfter,
-
-                showCertificatesDataButton: appDataTag.dataset.showCertificatesDataButton.includes('true'),
-                certificatesDataLink: appDataTag.dataset.certificatesDataLink,
-
-                showCourseReviewButton: appDataTag.dataset.showCourseReviewButton.includes('true'),
-                courseReviewLink: appDataTag.dataset.courseReviewLink,
-                showCourseReviewAfter: appDataTag.dataset.showCourseReviewAfter,
-
-                gitHubAccount: appDataTag.dataset.gitHubAccount,
-                gitHubToken: atob(appDataTag.dataset.gitHubToken),
-
                 currentISOTimeString: this.getCurrentISOTimeString(),
-
-                telegramGroupLink: appDataTag.dataset.telegramGroupLink,
-
-                courseLinkOnMainSite: appDataTag.dataset.courseLinkOnMainSite,
-
                 showPPTX: false, 
-                searchText: ''
+                searchText: '',
+                
+                ...appDataTag.dataset,
+                gitHubToken: atob(appDataTag.dataset.gitHubToken)          
             }
+
+            for(let item in dataConfig){
+                dataConfig[item] = String(dataConfig[item]).trim().toLowerCase() === 'true' 
+                                    ?   true 
+                                    :   String(dataConfig[item]).trim().toLowerCase() === 'false' 
+                                            ? false
+                                            : dataConfig[item];
+            }
+
+            return dataConfig;
         },
 
         async mounted() {
